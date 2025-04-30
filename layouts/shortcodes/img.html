@@ -1,0 +1,20 @@
+{{/* layouts/shortcodes/img.html */}}
+
+{{ $src   := .Get "src" }}
+{{ $alt   := .Get "alt" | default "" }}
+{{ $width := .Get "width" | default "800" }}
+
+{{ with resources.Get $src }}
+  {{/* resize+compress to JPEG */}}
+  {{ $jpeg := .Resize (printf "%sx q70" $width) }}
+  {{/* resize+compress to WebP */}}
+  {{ $webp := .Resize (printf "%sx q70 webp" $width) }}
+
+  <picture>
+    <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
+    <source srcset="{{ $jpeg.RelPermalink }}" type="{{ $jpeg.MediaType.Type }}">
+    <img src="{{ $jpeg.RelPermalink }}" alt="{{ $alt }}" loading="lazy">
+  </picture>
+{{ else }}
+  <p style="colour:red">Error: image “{{ $src }}” not found in assets/</p>
+{{ end }}

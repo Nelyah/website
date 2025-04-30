@@ -1,0 +1,109 @@
+2019-11-23T08:22:35+00:00 INFO Require to run updater..Start Installation/ Update process
+2019-11-23T08:22:35+00:00 INFO Needs DB Update?
+2019-11-23T08:22:35+00:00 INFO Current DB Version: 4.1.15
+2019-11-23T08:22:35+00:00 INFO Database update require. Start updating database
+2019-11-23T08:22:35+00:00 INFO Do Update....
+2019-11-23T08:22:35+00:00 INFO Current IG ES DB Version: 4.1.15
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_420_alter_campaigns_table
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_420_create_tables
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_420_migrate_mailer_options
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_420_db_version
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_421_drop_tables
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_421_create_tables
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_421_db_version
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_424_drop_tables
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_424_create_tables
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_424_db_version
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_430_alter_campaigns_table
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_430_db_version
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_431_set_default_permissions
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_431_permanently_delete_lists
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_431_permanently_delete_forms
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_431_disable_autoload_options
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_431_db_version
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_432_import_bfcm_templates
+2019-11-23T08:22:35+00:00 INFO [Queue] ig_es_update_432_db_version
+2019-11-23T08:22:35+00:00 INFO Yes, we have tasks to process
+2019-11-23T08:22:36+00:00 INFO --------------------- Started To Run Task Again---------------------
+2019-11-23T08:22:36+00:00 INFO [Processing] ig_es_update_420_alter_campaigns_table
+2019-11-23T08:22:36+00:00 INFO --- Running Task - ig_es_update_420_alter_campaigns_table
+2019-11-23T08:22:39+00:00 INFO --- Finished Task - ig_es_update_420_alter_campaigns_table 
+2019-11-23T08:22:39+00:00 INFO [Processed] ig_es_update_420_alter_campaigns_table
+2019-11-23T08:22:39+00:00 INFO [Processing] ig_es_update_420_create_tables
+2019-11-23T08:22:39+00:00 INFO --- Running Task - ig_es_update_420_create_tables
+2019-11-23T08:22:41+00:00 INFO --- Finished Task - ig_es_update_420_create_tables 
+2019-11-23T08:22:41+00:00 INFO [Processed] ig_es_update_420_create_tables
+2019-11-23T08:22:41+00:00 INFO [Processing] ig_es_update_420_migrate_mailer_options
+2019-11-23T08:22:41+00:00 INFO --- Running Task - ig_es_update_420_migrate_mailer_options
+2019-11-23T08:22:42+00:00 INFO --- Finished Task - ig_es_update_420_migrate_mailer_options 
+2019-11-23T08:22:42+00:00 INFO [Processed] ig_es_update_420_migrate_mailer_options
+2019-11-23T08:22:42+00:00 INFO [Processing] ig_es_update_420_db_version
+2019-11-23T08:22:42+00:00 INFO --- Running Task - ig_es_update_420_db_version
+2019-11-23T08:22:43+00:00 INFO --- Finished Task - ig_es_update_420_db_version 
+2019-11-23T08:22:43+00:00 INFO [Processed] ig_es_update_420_db_version
+2019-11-23T08:22:43+00:00 INFO [Processing] ig_es_update_421_drop_tables
+2019-11-23T08:22:43+00:00 INFO --- Running Task - ig_es_update_421_drop_tables
+2019-11-23T08:22:45+00:00 INFO --- Finished Task - ig_es_update_421_drop_tables 
+2019-11-23T08:22:45+00:00 INFO [Processed] ig_es_update_421_drop_tables
+2019-11-23T08:22:45+00:00 INFO [Processing] ig_es_update_421_create_tables
+2019-11-23T08:22:45+00:00 INFO --- Running Task - ig_es_update_421_create_tables
+2019-11-23T08:22:58+00:00 INFO --- Finished Task - ig_es_update_421_create_tables 
+2019-11-23T08:22:58+00:00 INFO [Processed] ig_es_update_421_create_tables
+2019-11-23T08:22:58+00:00 INFO [Processing] ig_es_update_421_db_version
+2019-11-23T08:22:58+00:00 INFO --- Running Task - ig_es_update_421_db_version
+2019-11-23T08:22:59+00:00 INFO --- Finished Task - ig_es_update_421_db_version 
+2019-11-23T08:22:59+00:00 INFO [Processed] ig_es_update_421_db_version
+2019-11-23T08:22:59+00:00 INFO [Processing] ig_es_update_424_drop_tables
+2019-11-23T08:22:59+00:00 INFO --- Running Task - ig_es_update_424_drop_tables
+2019-11-23T08:22:59+00:00 INFO --- Finished Task - ig_es_update_424_drop_tables 
+2019-11-23T08:22:59+00:00 INFO [Processed] ig_es_update_424_drop_tables
+2019-11-23T08:23:00+00:00 INFO [Processing] ig_es_update_424_create_tables
+2019-11-23T08:23:00+00:00 INFO --- Running Task - ig_es_update_424_create_tables
+2019-11-23T08:23:03+00:00 INFO --- Finished Task - ig_es_update_424_create_tables 
+2019-11-23T08:23:03+00:00 INFO [Processed] ig_es_update_424_create_tables
+2019-11-23T08:23:03+00:00 INFO [Processing] ig_es_update_424_db_version
+2019-11-23T08:23:03+00:00 INFO --- Running Task - ig_es_update_424_db_version
+2019-11-23T08:23:04+00:00 INFO --- Finished Task - ig_es_update_424_db_version 
+2019-11-23T08:23:04+00:00 INFO [Processed] ig_es_update_424_db_version
+2019-11-23T08:23:04+00:00 INFO [Processing] ig_es_update_430_alter_campaigns_table
+2019-11-23T08:23:04+00:00 INFO --- Running Task - ig_es_update_430_alter_campaigns_table
+2019-11-23T08:23:30+00:00 INFO Require to run updater..Start Installation/ Update process
+2019-11-23T08:23:30+00:00 INFO Needs DB Update?
+2019-11-23T08:23:30+00:00 INFO Current DB Version: 4.2.4
+2019-11-23T08:23:30+00:00 INFO Database update require. Start updating database
+2019-11-23T08:23:30+00:00 INFO Do Update....
+2019-11-23T08:23:30+00:00 INFO ********* Update is already running..... ****** 
+2019-11-23T08:23:40+00:00 INFO --- Finished Task - ig_es_update_430_alter_campaigns_table 
+2019-11-23T08:23:40+00:00 INFO [Processed] ig_es_update_430_alter_campaigns_table
+2019-11-23T08:23:41+00:00 INFO [Processing] ig_es_update_430_db_version
+2019-11-23T08:23:41+00:00 INFO --- Running Task - ig_es_update_430_db_version
+2019-11-23T08:23:42+00:00 INFO --- Finished Task - ig_es_update_430_db_version 
+2019-11-23T08:23:42+00:00 INFO [Processed] ig_es_update_430_db_version
+2019-11-23T08:23:42+00:00 INFO [Processing] ig_es_update_431_set_default_permissions
+2019-11-23T08:23:42+00:00 INFO --- Running Task - ig_es_update_431_set_default_permissions
+2019-11-23T08:23:43+00:00 INFO --- Finished Task - ig_es_update_431_set_default_permissions 
+2019-11-23T08:23:43+00:00 INFO [Processed] ig_es_update_431_set_default_permissions
+2019-11-23T08:23:44+00:00 INFO [Processing] ig_es_update_431_permanently_delete_lists
+2019-11-23T08:23:44+00:00 INFO --- Running Task - ig_es_update_431_permanently_delete_lists
+2019-11-23T08:23:44+00:00 INFO --- Finished Task - ig_es_update_431_permanently_delete_lists 
+2019-11-23T08:23:44+00:00 INFO [Processed] ig_es_update_431_permanently_delete_lists
+2019-11-23T08:23:44+00:00 INFO [Processing] ig_es_update_431_permanently_delete_forms
+2019-11-23T08:23:44+00:00 INFO --- Running Task - ig_es_update_431_permanently_delete_forms
+2019-11-23T08:23:44+00:00 INFO --- Finished Task - ig_es_update_431_permanently_delete_forms 
+2019-11-23T08:23:44+00:00 INFO [Processed] ig_es_update_431_permanently_delete_forms
+2019-11-23T08:23:45+00:00 INFO [Processing] ig_es_update_431_disable_autoload_options
+2019-11-23T08:23:45+00:00 INFO --- Running Task - ig_es_update_431_disable_autoload_options
+2019-11-23T08:23:46+00:00 INFO --- Finished Task - ig_es_update_431_disable_autoload_options 
+2019-11-23T08:23:46+00:00 INFO [Processed] ig_es_update_431_disable_autoload_options
+2019-11-23T08:23:47+00:00 INFO [Processing] ig_es_update_431_db_version
+2019-11-23T08:23:47+00:00 INFO --- Running Task - ig_es_update_431_db_version
+2019-11-23T08:23:49+00:00 INFO --- Finished Task - ig_es_update_431_db_version 
+2019-11-23T08:23:49+00:00 INFO [Processed] ig_es_update_431_db_version
+2019-11-23T08:23:49+00:00 INFO [Processing] ig_es_update_432_import_bfcm_templates
+2019-11-23T08:23:49+00:00 INFO --- Running Task - ig_es_update_432_import_bfcm_templates
+2019-11-23T08:23:49+00:00 INFO --- Finished Task - ig_es_update_432_import_bfcm_templates 
+2019-11-23T08:23:49+00:00 INFO [Processed] ig_es_update_432_import_bfcm_templates
+2019-11-23T08:23:50+00:00 INFO [Processing] ig_es_update_432_db_version
+2019-11-23T08:23:50+00:00 INFO --- Running Task - ig_es_update_432_db_version
+2019-11-23T08:23:52+00:00 INFO --- Finished Task - ig_es_update_432_db_version 
+2019-11-23T08:23:52+00:00 INFO [Processed] ig_es_update_432_db_version

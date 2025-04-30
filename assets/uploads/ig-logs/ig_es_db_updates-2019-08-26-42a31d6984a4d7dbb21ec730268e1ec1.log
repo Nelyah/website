@@ -1,0 +1,6 @@
+2019-08-26T06:19:11+00:00 INFO --- Finished Task - ig_es_update_4113_create_files 
+2019-08-26T06:19:11+00:00 INFO [Processed] ig_es_update_4113_create_files
+2019-08-26T06:19:11+00:00 INFO [Processing] ig_es_update_4113_db_version
+2019-08-26T06:19:11+00:00 INFO --- Running Task - ig_es_update_4113_db_version
+2019-08-26T06:19:12+00:00 INFO --- Finished Task - ig_es_update_4113_db_version 
+2019-08-26T06:19:12+00:00 INFO [Processed] ig_es_update_4113_db_version
