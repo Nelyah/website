@@ -7,7 +7,7 @@ url: /2018/12/06/muddy-road-mosquitoes-and-paraguay/
 featured_image: /uploads/2018/12/oi000046288195754.jpg
 categories:
   - South America
-tags:
+countries:
   - Argentina
   - Paraguay
 

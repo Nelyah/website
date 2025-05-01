@@ -7,7 +7,7 @@ url: /2019/03/30/with-a-little-help-from-my-friends/
 featured_image: /uploads/2019/03/img_1007.jpg
 categories:
   - South America
-tags:
+countries:
   - argentina
   - Chile
 

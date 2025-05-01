@@ -7,7 +7,7 @@ url: /2019/02/21/look-now-andes/
 featured_image: /uploads/2019/02/img_0888.jpg
 categories:
   - South America
-tags:
+countries:
   - argentina
 
 ---

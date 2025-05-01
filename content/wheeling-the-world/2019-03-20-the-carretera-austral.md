@@ -7,7 +7,7 @@ url: /2019/03/20/the-carretera-austral/
 featured_image: /uploads/2019/03/img_0969.jpg
 categories:
   - South America
-tags:
+countries:
   - Chile
 
 ---

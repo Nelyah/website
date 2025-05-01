@@ -3,42 +3,31 @@ languageCode = "en-gb"
 title = "Chloé Dequeker"
 theme = "hugo-theme-stack"
 
-# [[module.imports]]
-# path = "github.com/CaiJimmy/hugo-theme-stack/v3"
+[taxonomies]
+  countries = "countries"
+  category  = "categories"
+  tag       = "tags"
 
 [params]
   description = "foo bar"
   featuredImageField = "featured_image"
-  mainSections = ["home", "wheeling-the-world"]
+  mainSections = ["wheeling-the-world"]
 
-# mainSections = ["wheeling-the-world"]
-  # avatar.src = "profile_picture.jpg"
   [params.sidebar]
     compact = false
-  [[params.widgets.page]]
-    type = "page"
-  [[params.widgets.page]]
-    type = "archives"
-  [[params.widgets.homepage]]
-    type = "page"
-  [[params.widgets.homepage]]
-    type = "archives"
-
-  [[params.widgets.homepage]]
-    type = "categories"
-
-  [[params.widgets.homepage]]
-    type = "tag-countries"
-  [[params.widgets.homepage]]
-    type = "tag-cloud"
 
   [[params.widgets.page]]
-    type = "categories"
+    type = "continents"
 
   [[params.widgets.page]]
     type = "tag-countries"
-  [[params.widgets.page]]
-    type = "tag-cloud"
+    params.limit = 50
+  [[params.widgets.homepage]]
+    type = "continents"
+
+  [[params.widgets.homepage]]
+    type = "tag-countries"
+    params.limit = 50
 
 [menu]
   [[menu.main]]

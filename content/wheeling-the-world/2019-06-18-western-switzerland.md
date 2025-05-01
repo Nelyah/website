@@ -7,7 +7,7 @@ url: /2019/06/18/western-switzerland/
 featured_image: /uploads/2019/06/p6171353.jpg
 categories:
   - Europe
-tags:
+countries:
   - france
   - Switzerland
 

@@ -7,7 +7,7 @@ url: /2019/03/06/for-sea-able-folks/
 featured_image: /uploads/2019/03/img_0910.jpg
 categories:
   - South America
-tags:
+countries:
   - Chile
 
 ---

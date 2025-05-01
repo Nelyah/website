@@ -7,7 +7,7 @@ url: /2019/09/19/a-tale-of-wheels-and-hills/
 featured_image: /uploads/2019/09/img_4364.jpg
 categories:
   - Europe
-tags:
+countries:
   - Bulgaria
   - Hungary
   - Romania

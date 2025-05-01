@@ -7,7 +7,7 @@ url: /2019/04/14/can-you-feel-the-wind-tonight/
 featured_image: /uploads/2019/04/img_1070.jpg
 categories:
   - South America
-tags:
+countries:
   - argentina
   - Chile
 

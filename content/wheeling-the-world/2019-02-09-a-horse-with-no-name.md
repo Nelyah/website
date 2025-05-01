@@ -7,7 +7,7 @@ url: /2019/02/09/a-horse-with-no-name/
 featured_image: /uploads/2019/02/img_0786.jpg
 categories:
   - South America
-tags:
+countries:
   - argentina
 
 ---

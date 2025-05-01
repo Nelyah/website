@@ -7,7 +7,7 @@ url: /2019/01/18/the-route-to-cordoba/
 featured_image: /uploads/2019/01/img_0716.jpg
 categories:
   - South America
-tags:
+countries:
   - argentina
 
 ---

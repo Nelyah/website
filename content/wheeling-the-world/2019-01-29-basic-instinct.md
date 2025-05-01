@@ -7,7 +7,7 @@ url: /2019/01/29/basic-instinct/
 featured_image: /uploads/2019/01/img_0746.jpg
 categories:
   - South America
-tags:
+countries:
   - argentina
 
 ---

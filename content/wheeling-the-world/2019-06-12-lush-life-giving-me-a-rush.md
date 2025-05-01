@@ -7,7 +7,7 @@ url: /2019/06/12/lush-life-giving-me-a-rush/
 featured_image: /uploads/2019/06/img_3897.jpg
 categories:
   - Europe
-tags:
+countries:
   - france
 
 ---

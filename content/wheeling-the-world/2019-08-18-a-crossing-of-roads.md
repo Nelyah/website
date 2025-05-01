@@ -12,7 +12,7 @@ geo_public:
   - 1
 categories:
   - Europe
-tags:
+countries:
   - Bulgaria
   - Hungary
   - Romania

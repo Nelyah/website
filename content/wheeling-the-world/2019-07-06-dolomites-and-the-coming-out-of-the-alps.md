@@ -13,7 +13,7 @@ geo_public:
   - 1
 categories:
   - Europe
-tags:
+countries:
   - Austria
   - Italia
   - Slovenia
