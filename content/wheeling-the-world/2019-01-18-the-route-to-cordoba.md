@@ -9,7 +9,6 @@ categories:
   - South America
 tags:
   - argentina
-  - South America
 
 ---
 You know, there are days like these where nothing can go wrong. You start of your day comfortably numb from your resting sleep, enclosed in your tent and softly waking up to the sounds of various birds. You get out, enjoy the view and profit from the early sun rising. Quickly you get up and running, wolf down your breakfast and ultimately get back on your bike. As you turn the music on &#8220;Another day of sun&#8221; you quickly set a steady pace singing (off-tone) to the passing cars.

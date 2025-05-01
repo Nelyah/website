@@ -9,7 +9,6 @@ categories:
   - South America
 tags:
   - argentina
-  - South America
 
 ---
 And thus I left Córdoba, as always called away by the lust of the adventure and this time, the mountains. Well, the provincia of Córdoba certainly doesn&#8217;t compete with the whole cordillera thing in terms of altitude, but I must say that it did provide a nice warm-up!

@@ -14,7 +14,6 @@ categories:
   - Europe
 tags:
   - Bulgaria
-  - Europe
   - Hungary
   - Romania
   - Serbia

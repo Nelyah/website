@@ -9,7 +9,6 @@ categories:
   - South America
 tags:
   - argentina
-  - South America
 
 ---
 And here I am. Córdoba. To Argentinians standards an ancient city with building dating more than 2 or 3 centuries ago. If you&#8217;re an European reader this might not mean much to you, after all what&#8217;s 300 years when your own town or village is more than 500 or 700 years? Well from the perspective of a nation just barely over 200 years old, that&#8217;s a lot!

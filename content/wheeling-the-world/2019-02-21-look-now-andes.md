@@ -9,7 +9,6 @@ categories:
   - South America
 tags:
   - argentina
-  - South America
 
 ---
 How could I have been prepared for such beauty? Running uphill may sound tough to you city dwellers, but when you&#8217;re out there in the wild those mountains call to you. And the more you go the more it nags at you until ultimately you get in the heart of it. And so it was in this mindset that I set off the city of Malargüe to my crossing of the Andes.

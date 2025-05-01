@@ -8,7 +8,6 @@ featured_image: /uploads/2019/06/p6171353.jpg
 categories:
   - Europe
 tags:
-  - Europe
   - france
   - Switzerland
 

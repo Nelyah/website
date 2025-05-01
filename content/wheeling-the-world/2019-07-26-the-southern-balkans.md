@@ -16,7 +16,6 @@ categories:
 tags:
   - Albania
   - Bosnia and Herzegovina
-  - Europe
   - Kosovo
   - Macedonia
   - Montenegro

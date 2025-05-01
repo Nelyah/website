@@ -10,7 +10,6 @@ categories:
 tags:
   - argentina
   - Chile
-  - South America
 
 ---
 {{< img src="uploads/2019/04/img_1070.jpg" >}}

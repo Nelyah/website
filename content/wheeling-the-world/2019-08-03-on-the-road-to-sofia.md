@@ -15,7 +15,6 @@ categories:
   - Europe
 tags:
   - Bulgaria
-  - Europe
   - Macedonia
 
 ---

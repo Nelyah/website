@@ -16,7 +16,6 @@ categories:
 tags:
   - Bosnia and Herzegovina
   - Croatia
-  - Europe
   - Slovenia
 
 ---

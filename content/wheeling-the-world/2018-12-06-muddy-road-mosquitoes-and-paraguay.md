@@ -7,6 +7,9 @@ url: /2018/12/06/muddy-road-mosquitoes-and-paraguay/
 featured_image: /uploads/2018/12/oi000046288195754.jpg
 categories:
   - South America
+tags:
+  - Argentina
+  - Paraguay
 
 ---
 I finally made it out of the road 81!! But first, let me tell you all about the villages in between. Put off by the nothingness I found around the road for most of the time (which involves torny bushes) I decided to give up a bit on wild camping for a while. The good side about this decision however was that I have been stopping at most villages along the way. This also means I&#8217;ve also been able to strike up conversations with people there, leading to some great late night dinners. It&#8217;s always fun to test my Spanish against the jokes people keep throwing up at themselves!

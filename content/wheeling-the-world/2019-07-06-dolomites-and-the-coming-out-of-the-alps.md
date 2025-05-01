@@ -15,7 +15,6 @@ categories:
   - Europe
 tags:
   - Austria
-  - Europe
   - Italia
   - Slovenia
 

@@ -7,8 +7,6 @@ url: /2019/01/13/episode-ii-the-return-of-the-cyclist/
 featured_image: /uploads/2019/01/img_0670.jpg
 categories:
   - South America
-tags:
-  - South America
 
 ---
 First off, merry Christmas and happy new year to all of you! I haven&#8217;t been writing much on the blog lately, and although I haven&#8217;t ridden quite a lot has happened. My mum and sister crossing the globe to come say hi for one! Or me getting hosted in a friend&#8217;s family at Buenos Aires!
