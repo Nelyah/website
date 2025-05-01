@@ -2,6 +2,7 @@
 
 /public/
 /resources/_gen/
+/assets/jsconfig.json
 
 hugo.exe
 hugo.linux
