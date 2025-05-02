@@ -23,6 +23,9 @@ theme = "hugo-theme-stack"
     type = "tag-countries"
     params.limit = 50
 
+  [[params.widgets.page]]
+    type = "toc"
+
 #   [[params.widgets.page]]
 #     type = "search"
 #   [[params.widgets.homepage]]
@@ -92,6 +95,15 @@ theme = "hugo-theme-stack"
     weight = 3
     [menu.main.params]
         icon = "file-info"
+        newTab = false
+
+  [[menu.main]]
+    identifier = "hikes-and-travels"
+    name = "Where I've hiked"
+    url = "/hikes-and-travels/"
+    weight = 4
+    [menu.main.params]
+        icon = "map"
         newTab = false
 
 
