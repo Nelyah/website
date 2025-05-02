@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/"
+baseURL = "https://chloe.dequeker.me"
 languageCode = "en-gb"
 title = "Chloé Dequeker"
 theme = "hugo-theme-stack"
