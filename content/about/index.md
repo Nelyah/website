@@ -1,11 +1,10 @@
 ---
 title: About me
 author: Chloé
-type: page
 date: 2018-09-23T12:55:25+00:00
 
 ---
-<img decoding="async" src="https://wheelingtheworld.eu/wp-content/uploads/2019/02/img_0800.jpg" class="size-full" />
+{{< img src="/uploads/2019/02/img_0800.jpg" >}}
 
 Violin enthusiast, computer scientist nerd, crazy adventurer.
 

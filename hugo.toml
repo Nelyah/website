@@ -11,7 +11,7 @@ theme = "hugo-theme-stack"
 [params]
   description = "foo bar"
   featuredImageField = "featured_image"
-  mainSections = ["wheeling-the-world"]
+  mainSections = ["wheeling-the-world", "short-stories"]
 
   [params.sidebar]
     compact = false
@@ -22,12 +22,26 @@ theme = "hugo-theme-stack"
   [[params.widgets.page]]
     type = "tag-countries"
     params.limit = 50
+
+#   [[params.widgets.page]]
+#     type = "search"
+#   [[params.widgets.homepage]]
+#     type = "search"
+
   [[params.widgets.homepage]]
     type = "continents"
 
   [[params.widgets.homepage]]
     type = "tag-countries"
     params.limit = 50
+
+[[params.widgets.homepage]]
+  type  = "archivesByMonth"
+  title = "Archives by Month"
+
+[[params.widgets.page]]
+  type  = "archivesByMonth"
+  title = "Archives by Month"
 
 [menu]
   [[menu.social]]
@@ -63,11 +77,20 @@ theme = "hugo-theme-stack"
         newTab = false
 
   [[menu.main]]
+    identifier = "short-stories"
+    name = "Short stories"
+    url = "/short-stories/"
+    weight = 2
+    [menu.main.params]
+        icon = "vocabulary"
+        newTab = false
+
+  [[menu.main]]
     identifier = "about"
     name = "About me"
     url = "/about/"
-    weight = 1
+    weight = 3
     [menu.main.params]
-        icon = "home"
+        icon = "file-info"
         newTab = false
 
