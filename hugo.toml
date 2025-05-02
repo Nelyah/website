@@ -94,3 +94,33 @@ theme = "hugo-theme-stack"
         icon = "file-info"
         newTab = false
 
+
+[params.hugoLeaflet]
+
+  [[params.hugoLeaflet.css]]
+    href        = "https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    crossorigin = ""
+    [params.hugoLeaflet.css.params]
+      integrity = "sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+
+  [[params.hugoLeaflet.css]]
+    href = "https://unpkg.com/@raruto/leaflet-elevation@1.1.1/dist/leaflet-elevation.css"
+
+  [[params.hugoLeaflet.css]]
+    href = "/css/leaflet.extra-markers.min.css"
+
+
+  [[params.hugoLeaflet.js]]
+    src         = "https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    crossorigin = ""
+    [params.hugoLeaflet.js.params]
+      integrity = "sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+
+  [[params.hugoLeaflet.js]]
+    src = "/js/leaflet.elevation.js"
+
+  [[params.hugoLeaflet.js]]
+    src = "/js/leaflet.hugo.js"
+
+  [[params.hugoLeaflet.js]]
+    src = "/js/leaflet.extra-markers.min.js"
