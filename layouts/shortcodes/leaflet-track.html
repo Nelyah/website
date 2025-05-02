@@ -39,7 +39,7 @@
     trackOpts: {
       mapId:       "{{ $mapId }}",
       trackId:     "{{ $trackId }}",
-      trackPath:   '{{ "gpx" | absURL }}/{{$trackPath}}',
+      trackPath:   '{{ "gpx" | relURL }}/{{$trackPath}}',
       lineColor:   "{{ $lineColor }}",
       lineWeight:  "{{ $lineWeight }}",
       lineOpacity: "{{ $lineOpacity }}"
@@ -70,7 +70,7 @@
   });
 </script>
 
-<div class="download-track" onclick="downloadFile('{{ "gpx" | absURL }}/{{ $trackPath }}');"><p class="download-track-link">Download</p></div>
+<div class="download-track" onclick="downloadFile('{{ "gpx" | relURL }}/{{ $trackPath }}');"><p class="download-track-link">Download</p></div>
 
 {{ else }}
 {{ errorf "Leaflet Hugo Shortcode: impossible using track outside leaflet-map" }}
