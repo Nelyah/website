@@ -5,6 +5,16 @@ date: 2019-05-29T16:34:39+00:00
 toc: true
 ---
 
+## 2025 - July: Hiking trip in Norway - Jotunheimen
+
+Long hike of two weeks with Andréa! This might be the longest hike (walking) I've ever done. We were also extremely lucky
+to only have a single day of rain (besides some rain showers) over the two weeks. Other than that we got a lot of sun, a
+lot of heat and amazing views all along!
+
+{{< leaflet-map mapHeight="70rem" mapWidth="100%" mapId=202507-norway >}}
+    {{< leaflet-track trackPath="202507_norway_andrea.gpx" lineColor="#3796bf" lineWeight="5" >}}
+{{< /leaflet-map >}}
+
 ## 2025 - April: Bohusleden
 
 I hiked there with my friend Robb. Very cool, deep, ancient forests where you might expect an Ent behind every corner!
