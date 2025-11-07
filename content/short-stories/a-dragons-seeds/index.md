@@ -60,4 +60,4 @@ For a couple of moment, the woman looked back at the dragon with utter confusion
 
 "I can offer you this privilege, human. Should you bring a bag of those seeds every week, I will do my best to restrict my diet to only cows and sheep. Consider this a great honour." 
 It wasn't quite clear how much honour the human lady thought of the deal, as her mouth just opened, then closed without a sound. But this thought, Yuli never even considered it.
-She had already turned and was already flying away. Really, it was unconceivable to even consider denying the request of such a grand being.
+She had already turned and was already flying away. Really, it was inconceivable to even consider denying the request of such a grand being.
