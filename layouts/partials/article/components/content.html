@@ -1,0 +1,11 @@
+<section class="article-content{{ if eq .Section "short-stories" }} short-story-content{{ end }}">
+    <!-- Refer to https://discourse.gohugo.io/t/responsive-tables-in-markdown/10639/5 -->
+    {{ $content := .Content }}
+    {{ if eq .Section "short-stories" }}
+        {{ $content = printf "<div class=\"short-story-block\"><p class=\"short-story-paragraph\">%s" $content }}
+        {{ $content = $content | replaceRE "(?i)<br\\s*/?>" "</p><p class=\"short-story-paragraph\">" }}
+        {{ $content = printf "%s</p></div>" $content }}
+    {{ end }}
+    {{ $wrappedTable := printf "<div class=\"table-wrapper\">${1}</div>" }}
+    {{ $content | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
+</section>

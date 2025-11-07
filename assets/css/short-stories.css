@@ -1,0 +1,20 @@
+.short-story-content .short-story-block {
+  display: block;
+  text-align: justify;
+}
+
+.short-story-content .short-story-paragraph {
+  text-indent: 4.5rem;
+  margin-bottom: 0rem;
+  line-height: 1.8;
+}
+
+.short-story-content .short-story-paragraph + .short-story-paragraph {
+  margin-top: 0.3rem;
+}
+
+.short-story-content .short-story-paragraph em,
+.short-story-content .short-story-paragraph strong {
+  font-style: inherit;
+  font-weight: inherit;
+}

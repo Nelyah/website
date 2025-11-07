@@ -1,0 +1,5 @@
+{{ if eq .Section "short-stories" }}
+    {{ $css := resources.Get "css/short-stories.css" | resources.Minify | resources.Fingerprint }}
+    <link rel="preload" as="style" href="{{ $css.RelPermalink }}">
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ end }}

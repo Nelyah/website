@@ -46,6 +46,12 @@ theme = "hugo-theme-stack"
   type  = "archivesByMonth"
   title = "Archives by Month"
 
+# This allows to have regular line breaks in markdown to be rendered as an actual line break
+# on the website
+[markup]
+  [markup.goldmark.renderer]
+    hardWraps = true
+
 [menu]
   [[menu.social]]
     identifier = "github"
