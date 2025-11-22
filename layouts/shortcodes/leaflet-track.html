@@ -1,58 +1,76 @@
 {{ if .IsNamedParams }}
 
-{{ $trackPath := default "" (.Get "trackPath") }}
-{{ $lineColor := default "#006EFF" (.Get "lineColor") }}
-{{ $lineWeight := default "3" (.Get "lineWeight") }}
-{{ $lineOpacity := default "1" (.Get "lineOpacity") }}
+  {{ $trackPath   := default ""         (.Get "trackPath") }}
+  {{ $lineColor   := default "#3796bf"  (.Get "lineColor") }}
+  {{ $lineWeight  := default "15"        (.Get "lineWeight") }}
+  {{ $lineOpacity := default "1"        (.Get "lineOpacity") }}
 
-{{ $graphPosition := default "topright" (.Get "graphPosition") }}
-{{ $graphTheme := default "steelblue-theme" (.Get "graphTheme") }}
-{{ $graphWidth := default "500" (.Get "graphWidth") }}
-{{ $graphHeight := default "150" (.Get "graphHeight") }}
-{{ $graphFollowMarker := default false (.Get "graphFollowMarker") }}
-{{ $graphCollapsed := default false (.Get "graphCollapsed") }}
-{{ $graphDetached := default true (.Get "graphDetached") }}
+  {{ $showDownload      := default true              (.Get "showDownload") }}
+  {{ $showElevation     := default true              (.Get "showElevation") }}
 
-{{ $markerIcon := default "fa-thumb-tack" (.Get "markerIcon") }}
-{{ $markerIconColor := default "cyan" (.Get "markerIconColor") }}
-{{ $markerIconShape := default "penta" (.Get "markerIconShape") }}
-{{ $markerIconClasses := default "fa-icon-marker" (.Get "markerIconClasses") }}
-{{ $markerStartIcon := default "fa-play" (.Get "markerStartIcon") }}
-{{ $markerStartIconColor := default "green-light" (.Get "markerStartIconColor") }}
-{{ $markerStartIconShape := default "circle" (.Get "markerStartIconShape") }}
-{{ $markerStartIconClasses := default "fa-icon-marker fa-icon-start-stop" (.Get "markerStartIconClasses") }}
-{{ $markerEndIcon := default "fa-flag-checkered" (.Get "markerEndIcon") }}
-{{ $markerEndIconColor := default "red" (.Get "markerEndIconColor") }}
-{{ $markerEndIconShape := default "circle" (.Get "markerEndIconShape") }}
-{{ $markerEndIconClasses := default "fa-icon-marker fa-icon-start-stop" (.Get "markerEndIconClasses") }}
+  {{ $graphPosition     := default "topright"        (.Get "graphPosition") }}
+  {{ $graphTheme        := default "steelblue-theme" (.Get "graphTheme") }}
+  {{ $graphWidth        := default "500"             (.Get "graphWidth") }}
+  {{ $graphHeight       := default "150"             (.Get "graphHeight") }}
+  {{ $graphFollowMarker := default false             (.Get "graphFollowMarker") }}
+  {{ $graphCollapsed    := default false             (.Get "graphCollapsed") }}
+  {{ $graphDetached     := default true              (.Get "graphDetached") }}
+
+  {{/* Marker options */}}
+  {{ $markerIcon            := default "fa-thumb-tack"                        (.Get "markerIcon") }}
+  {{ $markerIconColor       := default "cyan"                                 (.Get "markerIconColor") }}
+  {{ $markerIconShape       := default "penta"                                (.Get "markerIconShape") }}
+  {{ $markerIconClasses     := default "fa-icon-marker"                       (.Get "markerIconClasses") }}
+  {{ $markerStartIcon       := default "fa-play"                              (.Get "markerStartIcon") }}
+  {{ $markerStartIconColor  := default "green-light"                          (.Get "markerStartIconColor") }}
+  {{ $markerStartIconShape  := default "circle"                               (.Get "markerStartIconShape") }}
+  {{ $markerStartIconClasses:= default "fa-icon-marker fa-icon-start-stop"    (.Get "markerStartIconClasses") }}
+  {{ $markerEndIcon         := default "fa-flag-checkered"                    (.Get "markerEndIcon") }}
+  {{ $markerEndIconColor    := default "red"                                  (.Get "markerEndIconColor") }}
+  {{ $markerEndIconShape    := default "circle"                               (.Get "markerEndIconShape") }}
+  {{ $markerEndIconClasses  := default "fa-icon-marker fa-icon-start-stop"    (.Get "markerEndIconClasses") }}
 
 {{ with .Parent }}
 
-{{ $mapLat := default "" (.Get "mapLat") }}
-{{ $mapLon := default "" (.Get "mapLon") }}
-{{ $mapId := default (md5 (printf "%s%s" $mapLat $mapLon)) (.Get "mapId") }}
+{{ $mapLat := default 52.52 (.Get "mapLat") }}
+{{ $mapLon := default 13.40 (.Get "mapLon") }}
+{{ $mapId := default (md5 (printf "%s%f" $mapLat $mapLon)) (.Get "mapId") }}
 {{ $trackId := md5 (printf "%s%s" $mapId $trackPath)}}
+{{ $fitTrack    := default true       (.Get "fitTrack") }}
+
+<div id="elevation-empty" style="display:none;"></div>
 
 <script>
   window._leafletTracks = window._leafletTracks || [];
   window._leafletTracks.push({
     trackOpts: {
       mapId:       "{{ $mapId }}",
+      mapLat:      "{{ $mapLat }}",
+      mapLon:      "{{ $mapLon }}",
       trackId:     "{{ $trackId }}",
       trackPath:   '{{ "gpx" | relURL }}/{{$trackPath}}',
+      fitTrack:    {{ $fitTrack }},
       lineColor:   "{{ $lineColor }}",
       lineWeight:  "{{ $lineWeight }}",
+      enableElevation: false,
+      showElevation: {{ $showElevation }},
       lineOpacity: "{{ $lineOpacity }}"
     },
-    elevationOpts: {
+    elevationOpts: { 
       graphPosition:     "{{ $graphPosition }}",
       graphTheme:        "{{ $graphTheme }}",
       graphWidth:        "{{ $graphWidth }}",
       graphHeight:       "{{ $graphHeight }}",
+      margins: {
+          top: 20,
+          right: 20,
+          bottom: 10,
+          left: 50
+      },
       graphFollowMarker: {{ $graphFollowMarker }},
       graphCollapsed:    {{ $graphCollapsed }},
       graphDetached:     {{ $graphDetached }}
-    },
+},
     markerOpts: {
       icon:              "{{ $markerIcon }}",
       iconColor:         "{{ $markerIconColor }}",
@@ -70,7 +88,9 @@
   });
 </script>
 
+{{if $showDownload }}
 <div class="download-track" onclick="downloadFile('{{ "gpx" | relURL }}/{{ $trackPath }}');"><p class="download-track-link">Download</p></div>
+{{end}}
 
 {{ else }}
 {{ errorf "Leaflet Hugo Shortcode: impossible using track outside leaflet-map" }}

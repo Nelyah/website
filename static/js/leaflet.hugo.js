@@ -2,18 +2,31 @@ let leafletMapsObj = {};
 let leafletMarkersObj = {};
 
 function drawTrack(trackOpts, elevationOpts, markerOpts) {
+    const map = leafletMapsObj[trackOpts.mapId];
+    if (!map) {
+        console.warn("drawTrack: map not found for mapId:", trackOpts.mapId);
+        return;
+    }
+
+    if (!trackOpts.trackPath) {
+        console.error("drawTrack: trackPath is missing for mapId:", trackOpts.mapId);
+        return;
+    }
+
     var opts = {
         elevationControl: {
             options: {
+                closeBtn: false,
+                autofitBounds: trackOpts.fitTrack,
                 position: elevationOpts.graphPosition,
                 theme: elevationOpts.graphTheme,
                 width: elevationOpts.graphWidth,
                 height: elevationOpts.graphHeight,
                 margins: {
-                    top: 20,
-                    right: 20,
-                    bottom: 35,
-                    left: 50
+                    top: elevationOpts.margins.top,
+                    right: elevationOpts.margins.right,
+                    bottom: elevationOpts.margins.bottom,
+                    left: elevationOpts.margins.left
                 },
                 followMarker: elevationOpts.graphFollowMarker,
                 collapsed: elevationOpts.graphCollapsed,
@@ -22,6 +35,7 @@ function drawTrack(trackOpts, elevationOpts, markerOpts) {
                 summary: false,
                 downloadLink: '',
                 gpxOptions: {
+                    async: true,
                     polyline_options: {
                         className: 'track-' + trackOpts.trackId + '-',
                         color: trackOpts.lineColor,
@@ -54,16 +68,20 @@ function drawTrack(trackOpts, elevationOpts, markerOpts) {
                         }
                     }
                 },
-
             },
         },
     };
 
-    L.control.elevation(opts.elevationControl.options).addTo(leafletMapsObj[trackOpts.mapId]).load(trackOpts.trackPath);
 
-    /*map.on('eledata_loaded', function(e) {
-        track = e.track_info;
-    });*/
+    if (!trackOpts.showElevation) {
+        // This is a dummy, empty div that I set in the html template
+        opts.elevationControl.options.elevationDiv = "#elevation-empty";
+    }
+
+    const controlElevation = L.control.elevation(opts.elevationControl.options)
+        .addTo(map);
+
+    controlElevation.load(trackOpts.trackPath);
 }
 
 window.downloadFile = function (sUrl) {
@@ -119,7 +137,8 @@ function createMap(mapnode) {
     //    leafletMapsObj[{{ $mapId }}].scrollWheelZoom.disable();
     //{{ end }}
     //Add tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        maxZoom: 17,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(leafletMapsObj[mapId]);
 };
@@ -136,15 +155,72 @@ function createMarker(markernode) {
 	    {{ end }}*/
 };
 
-window.onload = function(){
-	maps=document.getElementsByClassName("leaflet-map")
-	Array.from(maps).forEach(createMap)
-	markers=document.getElementsByClassName("leaflet-marker")
-	Array.from(markers).forEach(createMarker)
 
-    if (window._leafletTracks) {
-        window._leafletTracks.forEach(({ trackOpts, elevationOpts, markerOpts }) => {
-          drawTrack(trackOpts, elevationOpts, markerOpts);
+// Initialise everything for a single map node:
+// - create the map
+// - create all markers belonging to it
+// - draw all tracks belonging to it, but delayed one by one to make it feel faster
+function initMapAndChildren(mapNode) {
+    var mapId = mapNode.getAttribute("mapId");
+
+    if (!mapId) {
+        console.warn("initMapAndChildren: mapId attribute missing on node", mapNode);
+        return;
+    }
+
+    createMap(mapNode);
+
+    // 2) Create markers associated with this mapId
+    var markers = Array.prototype.slice.call(
+        document.querySelectorAll('.leaflet-marker[mapId="' + mapId + '"]')
+    );
+    markers.forEach(function (markerNode) {
+        createMarker(markerNode);
+    });
+
+    // 3) Draw tracks associated with this mapId, delayed
+    if (window._leafletTracks && Array.isArray(window._leafletTracks)) {
+        var tracks = window._leafletTracks.filter(function (entry) {
+            return entry.trackOpts && entry.trackOpts.mapId === mapId;
         });
-  }
+
+        // Stagger loading each track to avoid one huge CPU spike
+        tracks.forEach(function (entry, index) {
+            // You can tune the delay; for very heavy tracks increase this value.
+            var delay = index * 150;
+            setTimeout(function () {
+                drawTrack(entry.trackOpts, entry.elevationOpts, entry.markerOpts);
+            }, delay);
+        });
+    }
 }
+
+// Lazy-load maps when they come into view
+window.addEventListener('load', function () {
+    var maps = Array.prototype.slice.call(document.getElementsByClassName("leaflet-map"));
+
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                var mapNode = entry.target;
+                initMapAndChildren(mapNode);
+
+                // Stop observing once initialised
+                obs.unobserve(mapNode);
+            });
+        }, { rootMargin: '200px' }); // start a bit before visible
+
+        maps.forEach(function (node) {
+            observer.observe(node);
+        });
+    } else {
+        // Fallback for older browsers: initialise everything immediately
+        maps.forEach(function (node) {
+            initMapAndChildren(node);
+        });
+    }
+});
