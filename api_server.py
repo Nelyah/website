@@ -92,7 +92,7 @@ def append_map_entry(
 ) -> str:
     return (
         f"\n## {title}\n\n"
-        f'{{{{< leaflet-map mapHeight="70rem" mapWidth="100%" mapId={map_id} >}}}}\n'
+        f'{{{{< leaflet-map mapHeight="70rem" mapWidth="100%" mapId="{map_id}" >}}}}\n'
         f'    {{{{< leaflet-track trackPath="{gpx_filename}" >}}}}\n'
         f"{{{{< /leaflet-map >}}}}\n"
     )
@@ -197,6 +197,11 @@ async def upload_gpx(
     if not filename.lower().endswith(".gpx"):
         raise HTTPException(status_code=400, detail="Only .gpx files are accepted")
 
+    # Enforce size limit before reading into memory
+    max_bytes = 25 * 1024 * 1024  # 25MB
+    if file.size is not None and file.size > max_bytes:
+        raise HTTPException(status_code=413, detail="File too large (max 25MB)")
+
     STATIC_GPX_DIR.mkdir(parents=True, exist_ok=True)
 
     base_name = slugify(title or Path(filename).stem)
@@ -206,6 +211,8 @@ async def upload_gpx(
     # Lock protects index.md and static/gpx writes across workers/processes
     async with repo_lock():
         contents = await file.read()
+        if len(contents) > max_bytes:
+            raise HTTPException(status_code=413, detail="File too large (max 25MB)")
         with open(target_path, "wb") as out:
             out.write(contents)
 
