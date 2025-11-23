@@ -218,6 +218,17 @@ async def upload_gpx(
         with open(target_path, "wb") as out:
             out.write(contents)
 
+        # Basic GPX validity: try parsing; fail fast if invalid XML/GPX
+        try:
+            for _event, elem in ET.iterparse(target_path, events=("start",)):
+                if elem.tag.endswith("gpx"):
+                    break
+            else:
+                raise ValueError("Not a GPX file")
+        except Exception as exc:
+            target_path.unlink(missing_ok=True)
+            raise HTTPException(status_code=400, detail=f"Invalid GPX file: {exc}") from exc
+
         update_index_with_new_track(
             title or base_name, map_identifier, target_path.name
         )
