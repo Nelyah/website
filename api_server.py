@@ -125,6 +125,8 @@ def update_index_with_new_track(
     title: str, map_identifier: str, gpx_filename: str
 ) -> None:
     index_text = INDEX_MD.read_text(encoding="utf-8")
+    if f'mapId="{map_identifier}"' in index_text:
+        raise HTTPException(status_code=400, detail="map_id already exists in index.md")
     updated = add_track_at_placeholder(index_text, gpx_filename)
     section_block = append_map_entry(title, map_identifier, gpx_filename)
     updated = insert_section_at_placeholder(updated, section_block)
