@@ -165,7 +165,12 @@ def maybe_git_commit_and_push(gpx_path: Path, message: str) -> Dict[str, str]:
             return {"git": "pushed"}
         return {"git": "committed"}
     except subprocess.CalledProcessError as exc:
-        raise HTTPException(status_code=500, detail=f"Git error: {exc.stderr.strip()}")
+        err_out = (exc.stderr or "").strip()
+        logger.error("Git command failed: %s | stdout=%s | stderr=%s", exc.cmd, exc.stdout, exc.stderr)
+        if "user.name" in err_out or "user.email" in err_out:
+            hint = "Configure git user.name/user.email or set API_SKIP_GIT=true"
+            err_out = f"{err_out} ({hint})"
+        raise HTTPException(status_code=500, detail=f"Git error: {err_out or exc}") from exc
 
 
 @asynccontextmanager
