@@ -31,6 +31,7 @@ from pathlib import Path
 from typing import AsyncIterator, Dict, List, Optional, Tuple
 from contextlib import asynccontextmanager
 import tempfile
+import logging
 
 from fastapi import Depends, FastAPI, File, Form, Header, HTTPException, UploadFile
 
@@ -44,6 +45,14 @@ LOCK_PATH = Path(tempfile.gettempdir()) / "hikes_upload.lock"
 _async_lock = asyncio.Lock()  # intra-process guard to serialize within one worker
 ALL_HIKES_PLACEHOLDER = "<!-- ALL_HIKES_TRACKS -->"
 NEW_SECTION_PLACEHOLDER = "<!-- NEW_HIKE_SECTION -->"
+
+logger = logging.getLogger("api")
+# Init logging when the ASGI app starts (not via __main__), avoiding host logger overrides
+if not logger.handlers:
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
+    logger.addHandler(handler)
+logger.setLevel(logging.INFO)
 
 app = FastAPI()
 
@@ -134,6 +143,7 @@ def update_index_with_new_track(
 
 
 def run_cmd(cmd: List[str], cwd: Path = REPO_ROOT) -> subprocess.CompletedProcess[str]:
+    logger.info("Running command: %s", " ".join(cmd))
     return subprocess.run(
         cmd,
         cwd=cwd,
@@ -195,6 +205,7 @@ async def upload_gpx(
     map_id: str = Form(...),
     _=Depends(verify_token),
 ):
+    logger.info("Upload requested: filename=%s title=%s map_id=%s size=%s", file.filename, title, map_id, getattr(file, "size", None))
     filename = file.filename or "upload.gpx"
     if not filename.lower().endswith(".gpx"):
         raise HTTPException(status_code=400, detail="Only .gpx files are accepted")
@@ -215,6 +226,7 @@ async def upload_gpx(
         contents = await file.read()
         if len(contents) > max_bytes:
             raise HTTPException(status_code=413, detail="File too large (max 25MB)")
+        logger.info("Writing GPX to %s (%d bytes)", target_path, len(contents))
         with open(target_path, "wb") as out:
             out.write(contents)
 
@@ -226,6 +238,7 @@ async def upload_gpx(
             else:
                 raise ValueError("Not a GPX file")
         except Exception as exc:
+            logger.error("Invalid GPX file: %s", exc)
             target_path.unlink(missing_ok=True)
             raise HTTPException(status_code=400, detail=f"Invalid GPX file: {exc}") from exc
 
