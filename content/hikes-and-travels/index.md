@@ -19,7 +19,10 @@ toc: true
     {{< leaflet-track trackPath="202101_guadeloupe_morne_mazeau.gpx" showElevation=false showDownload=false >}}
     {{< leaflet-track trackPath="202007_mont-thabor_andrea.gpx" showElevation=false showDownload=false >}}
     {{< leaflet-track trackPath="2018_south_america_bicycle.gpx" showElevation=false showDownload=false >}}
+    <!-- ALL_HIKES_TRACKS -->
 {{< /leaflet-map >}}
+
+<!-- NEW_HIKE_SECTION -->
 
 ## 2025 - July: Hiking trip in Norway - Jotunheimen
 
