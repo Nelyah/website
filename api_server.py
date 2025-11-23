@@ -173,6 +173,25 @@ def maybe_git_commit_and_push(gpx_path: Path, message: str) -> Dict[str, str]:
         raise HTTPException(status_code=500, detail=f"Git error: {err_out or exc}") from exc
 
 
+def rebuild_site() -> Dict[str, str]:
+    """Rebuild the Hugo site so the static output picks up new content."""
+    try:
+        run_cmd(
+            [
+                "hugo",
+                "--environment",
+                "production",
+                "--minify",
+                "--destination",
+                str(REPO_ROOT / "public"),
+            ]
+        )
+        return {"build": "success"}
+    except subprocess.CalledProcessError as exc:
+        detail = exc.stderr.strip() or exc.stdout.strip() if exc.stdout else ""
+        raise HTTPException(status_code=500, detail=f"Hugo build failed: {detail}")
+
+
 @asynccontextmanager
 async def repo_lock() -> AsyncIterator[None]:
     """
@@ -255,10 +274,13 @@ async def upload_gpx(
 
     git_result = maybe_git_commit_and_push(target_path, f"Add GPX: {target_path.name}")
 
+    build_result = rebuild_site()
+
     return {
         "status": "ok",
         "file": target_path.name,
         "map_id": map_identifier,
         "center": center,
         **git_result,
+        **build_result,
     }

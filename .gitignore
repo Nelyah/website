@@ -10,3 +10,4 @@ hugo.darwin
 .hugo_build.lock
 
 .env
+.venv
