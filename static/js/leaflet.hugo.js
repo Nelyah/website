@@ -1,5 +1,8 @@
 let leafletMapsObj = {};
 let leafletMarkersObj = {};
+// Queue map initialisation to avoid flooding the tile server when many maps become visible
+let _mapInitQueue = [];
+let _mapInitInProgress = false;
 
 function drawTrack(trackOpts, elevationOpts, markerOpts) {
     const map = leafletMapsObj[trackOpts.mapId];
@@ -151,6 +154,9 @@ function createMap(mapnode) {
     L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
         maxZoom: 17,
         maxNativeZoom: 17,
+        // Avoid requesting tiles mid-zoom/pan bursts; helps with provider rate limits
+        updateWhenIdle: true,   // reduce tile bursts while zooming/dragging
+        updateWhenZooming: false,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(leafletMapsObj[mapId]);
 };
@@ -207,6 +213,25 @@ function initMapAndChildren(mapNode) {
     }
 }
 
+// Process map initialisations one at a time to avoid flooding tile servers
+function processMapQueue() {
+    if (_mapInitInProgress) {
+        return;
+    }
+    var mapNode = _mapInitQueue.shift();
+    if (!mapNode) {
+        return;
+    }
+    _mapInitInProgress = true;
+
+    // slight delay to stagger tile requests when many maps enter view at once
+    setTimeout(function () {
+        initMapAndChildren(mapNode);
+        _mapInitInProgress = false;
+        processMapQueue();
+    }, 150);
+}
+
 // Lazy-load maps when they come into view
 window.addEventListener('load', function () {
     var maps = Array.prototype.slice.call(document.getElementsByClassName("leaflet-map"));
@@ -219,7 +244,8 @@ window.addEventListener('load', function () {
                 }
 
                 var mapNode = entry.target;
-                initMapAndChildren(mapNode);
+                _mapInitQueue.push(mapNode);
+                processMapQueue();
 
                 // Stop observing once initialised
                 obs.unobserve(mapNode);
@@ -232,7 +258,8 @@ window.addEventListener('load', function () {
     } else {
         // Fallback for older browsers: initialise everything immediately
         maps.forEach(function (node) {
-            initMapAndChildren(node);
+            _mapInitQueue.push(node);
         });
+        processMapQueue();
     }
 });
