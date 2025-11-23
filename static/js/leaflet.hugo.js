@@ -41,6 +41,9 @@ function drawTrack(trackOpts, elevationOpts, markerOpts) {
                         color: trackOpts.lineColor,
                         opacity: trackOpts.lineOpacity,
                         weight: trackOpts.lineWeight,
+                        // Canvas renderer + light smoothing keep large GPX files responsive when zooming
+                        renderer: map._trackRenderer || (map._trackRenderer = L.canvas({ padding: 0.5 })),
+                        smoothFactor: 1.2,
                     },
                     marker_options: {
                         startIcon: new L.ExtraMarkers.icon({
@@ -126,19 +129,28 @@ window.downloadFile.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome
 window.downloadFile.isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
 
 function createMap(mapnode) {
-    mapId=mapnode.getAttribute("mapId")
-    mapLat=mapnode.getAttribute("mapLat")
-    mapLon=mapnode.getAttribute("mapLon")
-    zoom=mapnode.getAttribute("Zoom")
+    const mapId = mapnode.getAttribute("mapId");
+    const latAttr = parseFloat(mapnode.getAttribute("mapLat"));
+    const lonAttr = parseFloat(mapnode.getAttribute("mapLon"));
+    // fall back to sensible defaults if attributes are missing/empty
+    const mapLat = Number.isFinite(latAttr) ? latAttr : 52.52;
+    const mapLon = Number.isFinite(lonAttr) ? lonAttr : 13.4;
+    const zoomAttr = parseInt(mapnode.getAttribute("zoom") || mapnode.getAttribute("Zoom"), 10);
+    const zoom = Number.isFinite(zoomAttr) ? zoomAttr : 13;
+    const scrollWheelZoom = mapnode.getAttribute("scrollWheelZoom") !== "false";
 
     //Create Map
-    leafletMapsObj[mapId] = L.map("mapid_" + mapId).setView([mapLat, mapLon], zoom);
-    //{{ if eq $scrollWheelZoom "false" }}
-    //    leafletMapsObj[{{ $mapId }}].scrollWheelZoom.disable();
-    //{{ end }}
+    leafletMapsObj[mapId] = L.map("mapid_" + mapId, {
+        preferCanvas: true,
+        scrollWheelZoom: scrollWheelZoom,
+        maxZoom: 17, // clamp to tile availability to avoid blank map when over-zooming
+        minZoom: 2,
+    }).setView([mapLat, mapLon], zoom);
+
     //Add tiles
     L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
         maxZoom: 17,
+        maxNativeZoom: 17,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(leafletMapsObj[mapId]);
 };
