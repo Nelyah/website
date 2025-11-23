@@ -1,7 +1,7 @@
 """
 Minimal upload API for GPX files.
 
-- POST /api/upload with form-data:
+- POST /upload with form-data:
     - file: GPX file (required)
     - title: section heading (required)
     - map_id: mapId for the shortcode (required)
@@ -181,12 +181,12 @@ async def verify_token(authorization: str = Header(None)):
         raise HTTPException(status_code=401, detail="Invalid token")
 
 
-@app.get("/api/health")
+@app.get("/health")
 async def health():
     return {"status": "ok"}
 
 
-@app.post("/api/upload")
+@app.post("/upload")
 async def upload_gpx(
     file: UploadFile = File(...),
     title: str = Form(...),
