@@ -54,7 +54,70 @@ if not logger.handlers:
     logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
-app = FastAPI()
+async def run_cmd_async(cmd: List[str], cwd: Path = REPO_ROOT) -> subprocess.CompletedProcess[str]:
+    return await asyncio.to_thread(run_cmd, cmd, cwd)
+
+
+async def pull_and_rebuild_if_needed() -> None:
+    async with repo_lock():
+        try:
+            await run_cmd_async(["git", "fetch", "--quiet"])
+        except subprocess.CalledProcessError as exc:
+            logger.error("Git fetch failed: %s", exc.stderr or exc.stdout or exc)
+            return
+
+        try:
+            await run_cmd_async(
+                ["git", "rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}"]
+            )
+        except subprocess.CalledProcessError as exc:
+            logger.warning("No upstream configured; skipping sync: %s", exc.stderr or exc.stdout or exc)
+            return
+
+        try:
+            ahead = await run_cmd_async(["git", "rev-list", "--count", "HEAD..@{u}"])
+        except subprocess.CalledProcessError as exc:
+            logger.error("Git rev-list failed: %s", exc.stderr or exc.stdout or exc)
+            return
+
+        if int((ahead.stdout or "0").strip() or "0") <= 0:
+            logger.info("No upstream changes detected")
+            return
+
+        try:
+            await run_cmd_async(["git", "pull", "--ff-only"])
+        except subprocess.CalledProcessError as exc:
+            logger.error("Git pull failed: %s", exc.stderr or exc.stdout or exc)
+            return
+
+        try:
+            await asyncio.to_thread(rebuild_site)
+            logger.info("Rebuilt site after git pull")
+        except HTTPException as exc:
+            logger.error("Hugo rebuild failed after pull: %s", exc.detail)
+
+
+async def periodic_upstream_sync(stop_event: asyncio.Event) -> None:
+    while not stop_event.is_set():
+        await pull_and_rebuild_if_needed()
+        try:
+            await asyncio.wait_for(stop_event.wait(), timeout=600)
+        except asyncio.TimeoutError:
+            continue
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    stop_event = asyncio.Event()
+    task = asyncio.create_task(periodic_upstream_sync(stop_event))
+    try:
+        yield
+    finally:
+        stop_event.set()
+        await task
+
+
+app = FastAPI(lifespan=lifespan)
 
 
 def slugify(value: str) -> str:
