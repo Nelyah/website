@@ -1,0 +1,49 @@
+{{- $query := first 1 (where .Context.Site.Pages "Layout" "==" "archives") -}}
+{{- $limit := default 5 .Params.limit -}}
+{{- $title := default "Archives" .Params.title -}}
+{{- if $query -}}
+    {{- $archivesPage := index $query 0 -}}
+    <section class="widget archives">
+        <div class="widget-icon">
+            {{ partial "helper/icon" "archives" }}
+        </div>
+        <h2 class="widget-title section-title">{{ $title }}</h2>
+
+        {{- $filtered := partial "helper/archive-pages" .Context -}}
+        {{- $archives := $filtered.GroupByDate "2006" -}}
+
+        <div class="widget-archive--list">
+            {{- range $index, $yearGroup := first (add $limit 1) $archives -}}
+                {{- if eq $index $limit -}}
+                    <div class="archives-year">
+                        <a href="{{ $archivesPage.RelPermalink }}">
+                            <span class="year">{{ T "widget.archives.more" }}</span>
+                        </a>
+                    </div>
+                {{- else -}}
+                    {{- $yearID := lower (replace $yearGroup.Key " " "-") -}}
+                    <div class="archives-year-group">
+                        <div class="archives-year">
+                            <a href="{{ $archivesPage.RelPermalink }}#{{ $yearID }}">
+                                <span class="year">{{ $yearGroup.Key }}</span>
+                                <span class="count">{{ len $yearGroup.Pages }}</span>
+                            </a>
+                        </div>
+                        <div class="archives-months">
+                            {{- range $monthGroup := $yearGroup.Pages.GroupByDate "2006-01" -}}
+                                {{- $monthID := lower (replace $monthGroup.Key " " "-") -}}
+                                {{- $monthTime := time (printf "%s-01" $monthGroup.Key) -}}
+                                <a class="archives-month" href="{{ $archivesPage.RelPermalink }}#{{ $monthID }}">
+                                    <span class="month">{{ $monthTime.Format "January" }}</span>
+                                    <span class="count">{{ len $monthGroup.Pages }}</span>
+                                </a>
+                            {{- end -}}
+                        </div>
+                    </div>
+                {{- end -}}
+            {{- end -}}
+        </div>
+    </section>
+{{- else -}}
+    {{- warnf "Archives page not found. Create a page with layout: archives." -}}
+{{- end -}}

@@ -1,0 +1,8 @@
+{{- $pages := where .Site.RegularPages "Params.hidden" "!=" true -}}
+{{- if .Site.Params.mainSections -}}
+    {{- $main := where $pages "Section" "in" .Site.Params.mainSections -}}
+    {{- if gt (len $main) 0 -}}
+        {{- $pages = $main -}}
+    {{- end -}}
+{{- end -}}
+{{- return $pages -}}

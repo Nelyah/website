@@ -1,0 +1,46 @@
+{{ define "body-class" }}template-archives{{ end }}
+{{ define "main" }}
+    <header>
+        {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categories" -}}
+        {{- $terms := $taxonomy.Pages -}}
+        {{ if $terms }}
+        <h2 class="section-title">{{ $taxonomy.Title }}</h2>
+        <div class="subsection-list">
+            <div class="article-list--tile">
+                {{ range $terms }}
+                    {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </header>
+
+    {{- $filtered := partial "helper/archive-pages" . -}}
+
+    {{- range $yearGroup := $filtered.GroupByDate "2006" -}}
+        {{- $yearID := lower (replace $yearGroup.Key " " "-") -}}
+        <div class="archives-group" id="{{ $yearID }}">
+            <h2 class="archives-date section-title archives-year-title">
+                <a href="{{ $.RelPermalink }}#{{ $yearID }}">{{ $yearGroup.Key }}</a>
+            </h2>
+            {{- range $monthGroup := $yearGroup.Pages.GroupByDate "2006-01" -}}
+                {{- $monthID := lower (replace $monthGroup.Key " " "-") -}}
+                {{- $monthTime := time (printf "%s-01" $monthGroup.Key) -}}
+                <h3 class="archives-date section-title archives-month-title" id="{{ $monthID }}">
+                    <a href="{{ $.RelPermalink }}#{{ $monthID }}">{{ $monthTime.Format "January 2006" }}</a>
+                </h3>
+                <div class="article-list--compact">
+                    {{ range $monthGroup.Pages }}
+                        {{ partial "article-list/compact" . }}
+                    {{ end }}
+                </div>
+            {{- end }}
+        </div>
+    {{- end }}
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "page") }}
+{{ end }}
