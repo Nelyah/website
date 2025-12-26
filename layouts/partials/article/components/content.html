@@ -2,6 +2,7 @@
     <!-- Refer to https://discourse.gohugo.io/t/responsive-tables-in-markdown/10639/5 -->
     {{ $content := .Content }}
     {{ if eq .Section "short-stories" }}
+        {{ $content = $content | replaceRE "(?is)^\\s*<p(\\s[^>]*)?>" "<p class=\"short-story-paragraph\"$1>" }}
         {{ $content = printf "<div class=\"short-story-block\"><p class=\"short-story-paragraph\">%s" $content }}
         {{ $content = $content | replaceRE "(?i)<br\\s*/?>" "</p><p class=\"short-story-paragraph\">" }}
         {{ $content = printf "%s</p></div>" $content }}

@@ -4,13 +4,13 @@
 }
 
 .short-story-content .short-story-paragraph {
-  text-indent: 4.5rem;
+  text-indent: 4.3rem;
   margin-bottom: 0rem;
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
 .short-story-content .short-story-paragraph + .short-story-paragraph {
-  margin-top: 0.3rem;
+  margin-top: 0rem;
 }
 
 .short-story-content .short-story-paragraph em,
