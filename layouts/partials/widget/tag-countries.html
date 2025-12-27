@@ -1,0 +1,19 @@
+{{- $context := .Context -}}
+{{- $show := or (eq $context.Section "wheeling-the-world") (in (slice "taxonomy" "term") $context.Kind) -}}
+{{ if $show }}
+{{- $limit := default 10 .Params.limit -}}
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        {{ partial "helper/icon" "tag" }}
+    </div>
+    <h2 class="widget-title section-title">Countries</h2>
+
+    <div class="tagCloud-tags">
+        {{ range first $limit $context.Site.Taxonomies.countries.ByCount }}
+            <a href="{{ .Page.RelPermalink }}" class="font_size_{{ .Count }}">
+                {{ .Page.Title }}
+            </a>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
