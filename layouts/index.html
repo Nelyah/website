@@ -1,0 +1,30 @@
+{{ define "main" }}
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+    {{ $filtered := ($pages | intersect $notHidden) }}
+    {{ $pag := .Paginate ($filtered) }}
+
+
+    <div class="article-page">
+      <article class="main-article">
+        <section class="article-content">
+        {{ .Content }}
+        </section>
+      </article>
+    </div>
+    <section class="article-list">
+        <hr style="border: 1px solid #ccc; margin: 0px 0;">
+        <h2 class="article-title"> Latest posts </h2>
+
+        {{ range $index, $element := $pag.Pages }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

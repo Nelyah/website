@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 {{ end }}
 
+{{ if .HasShortcode "leaflet-map" }}
+    {{ partial "leaflet-loader" . }}
+{{ end }}
+
 {{ with .Site.Params.favicon }}
     <link rel="icon" type="image/png" href="{{ . | relURL }}">
     <link rel="apple-touch-icon" href="{{ . | relURL }}">
