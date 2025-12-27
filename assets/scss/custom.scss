@@ -83,3 +83,7 @@
 .right-sidebar::-webkit-scrollbar {
   display: none;
 }
+
+:root {
+  --base-font-family: var(--sys-font-family), sans-serif;
+}
