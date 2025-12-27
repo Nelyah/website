@@ -12,6 +12,7 @@ theme = "hugo-theme-stack"
   description = "foo bar"
   featuredImageField = "featured_image"
   mainSections = ["wheeling-the-world", "short-stories"]
+  favicon = "favicon.png"
 
   [params.sidebar]
     compact = false
