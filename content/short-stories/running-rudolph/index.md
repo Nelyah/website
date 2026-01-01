@@ -5,8 +5,8 @@ type: post
 date: 2025-12-25T11:27:39+00:00
 featured_image:
 description: >
-    Christmas is upon us, and Rudolph is well decided to be part of Santa's sledge and distributing presents.
-    But spots on that sledge are few and competition is fierce...
+    Christmas is upon us, and Rudolph is well decided to be part of Santa's sleigh and distributing presents.
+    But spots on that sleigh are few and competition is fierce...
 tags:
     - short story
     - animal
@@ -23,12 +23,12 @@ Anna gave me a pained smile and Rudolph could feel their heart sinking. They had
 “Twelve minutes and nineteen seconds,” said Anna. “I’m sorry, that puts you at fifteenth position on the current standing.”
 The snow suddenly felt like it had drained all of their warmth at once. “This isn’t enough,” sighed Rudolph. Christmas was coming soon and the final race was taking place next week. Only the twelve fastest reindeers would be able to ride along Santa and tour the world. “Tell me Anna, how am I supposed to make it? We’ve been relentlessly training for months. You ruthlessly pushed me through all the drills that even elves could not imagine. We ran by sun, by wind and gave it my all. Blood, sweat and tears yet even that isn’t enough. I need to get that spot. I want to travel. Have you heard of the Bahamas? They say that sun shines the same amount every day of the year. And the sea there is crystal blue! Like ice, but liquid and warm. And I want to see the penguins in Southern America, the giraffes in Africa and the pandas of Asia.”
 “I want to see it all, Anna,” added Rudolph.
-“I know, Rudolph.” She looked sad, almost sadder than them, even though she wasn’t the one competing for the position. Unfortunately, it had been years since a female-presenting reindeer had managed a spot at Santa’s sledge. Their method of filtering ‘the best’ of reindeers relied entirely upon physical challenges that male-presenting reindeers were given an unfair advantage because of their body type. The entirety of Santa’s methodology was so deeply flawed that she’d refused to participate. Talk about presenting a fair challenge where all were equal. But if it was Rudolph’s dream, then she’d helped them. They’d do the same for her. “Do you think it could help if you were going to see Gastong? I know he won the competition back then when he was young.”
+“I know, Rudolph.” She looked sad, almost sadder than them, even though she wasn’t the one competing for the position. Unfortunately, it had been years since a female-presenting reindeer had managed a spot at Santa’s sleigh. Their method of filtering ‘the best’ of reindeers relied entirely upon physical challenges that male-presenting reindeers were given an unfair advantage because of their body type. The entirety of Santa’s methodology was so deeply flawed that she’d refused to participate. Talk about presenting a fair challenge where all were equal. But if it was Rudolph’s dream, then she’d helped them. They’d do the same for her. “Do you think it could help if you were going to see Gastong? I know he won the competition back then when he was young.”
 “Gastong?!” He can barely drag himself across the street to get to the bar these days. 
 “Well, with a spark of luck he’ll have some advice for you. Bring some flint.” She gave him a pointed look and the hint of a mischievous smile showed on her face. “Unless you want to let James win, of course.”
 “Don’t you dare. If that horse of a reindeer makes it, then something is very wrong with the world. Anna, last time we competed can I remind you that he tackled me so I wouldn’t win?”
 “I think something if really wrong with the world indeed, since James does have a chance to make it. Go to Gastong. What do you have to lose anyway?”
-Rudolph was tired. Over the past week, their schedule had been packed with daily training. Sprints, interval training. Endurance run had blended one another, whether a blizzard was on the way or not. Whether wind blasted you with tiny ice shards as you rushed through them or not. If you wanted to tour the world on Santa’s sledge during Christmas night, well you had to work for it, didn’t you?
+Rudolph was tired. Over the past week, their schedule had been packed with daily training. Sprints, interval training. Endurance run had blended one another, whether a blizzard was on the way or not. Whether wind blasted you with tiny ice shards as you rushed through them or not. If you wanted to tour the world on Santa’s sleigh during Christmas night, well you had to work for it, didn’t you?
 They started back to the village. Anna’s attempt at making conversation quickly died off when face by the heavy cloud that seemed to paint Rudolph’s humour. One week left. They were close, their time had been steadily improving but so had the competition’s. 
 
 As they entered the village, Anna bid them farewell. “Think about what I said, Rudolph. Gastong might not be the runner he was fifteen years ago, but he did win.”
@@ -142,7 +142,7 @@ Rudolph opened their eyes again. They were in a warm room. The timid light of th
 “Thirteenth,” said Rudolph. They let the word sit on their tongue, and it left a bitter taste. Years of hoping. Months and month of extreme preparation. But in the end, they’d achieved no better than those other ones that hadn’t trained and only participated for the fun of it. “I wanted to explore. I wanted to go, to see the Bahamas, to see the sea and the beaches and the sun.”
 “I know you did,” said Anna. “But there’s a thing I’ve never understood about all this.”
 “What’s that?”
-“Why do we have to pull a sledge to explore the world?” Said Anna as a smile started to blossom on her face. 
+“Why do we have to pull a sleigh to explore the world?” Said Anna as a smile started to blossom on her face. 
 “But we can’t, we need to fly to go!” exclaimed Rudolph.
 “Do we? That’s what they say. How about we go check for ourselves? Let’s explore a bit.” Anna eyed Rudolph’s leg that was still left dangling at their side. “Once you’ve recovered, though. No argument.”
 “Once I’ve recovered,” replied Rudolph with a smile.
